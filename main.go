@@ -59,7 +59,7 @@ func userInput() (string, string, error) {
 func getColumnIndex(data [][]string, value string) int {
 	for columnIndex, column := range data {
 		if column[0] == value {
-			fmt.Println("Column number: ", columnIndex)
+			// fmt.Println("Column number: ", columnIndex)
 			return columnIndex
 		}
 	}
@@ -70,7 +70,7 @@ func getColumnIndex(data [][]string, value string) int {
 func getRowIndex(data [][]string, value string) int {
 	for rowIndex, row := range data {
 		if row[0] == value {
-			fmt.Println("Row number: ", rowIndex)
+			// fmt.Println("Row number: ", rowIndex)
 			return rowIndex
 		}
 	}
