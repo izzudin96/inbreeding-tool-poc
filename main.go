@@ -8,6 +8,13 @@ import (
 )
 
 func main() {
+	baseBull, targetBull, err := userInput()
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	filepath := filepath.Join("data", "inbreeding.csv")
 
 	file, err := os.Open(filepath)
@@ -27,8 +34,8 @@ func main() {
 		return
 	}
 
-	column := getColumnIndex(records, "94451")
-	row := getRowIndex(records, "94438")
+	column := getColumnIndex(records, baseBull)
+	row := getRowIndex(records, targetBull)
 	inbreedingValue, err := getCellValue(records, column, row)
 
 	if err != nil {
@@ -36,6 +43,17 @@ func main() {
 	}
 
 	fmt.Println(inbreedingValue)
+}
+
+func userInput() (string, string, error) {
+	if len(os.Args) != 3 {
+		return "", "", fmt.Errorf("usage: ./your_program <input1> <input2>")
+	}
+
+	input1 := os.Args[1]
+	input2 := os.Args[2]
+
+	return input1, input2, nil
 }
 
 func getColumnIndex(data [][]string, value string) int {
